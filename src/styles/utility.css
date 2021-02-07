@@ -116,10 +116,8 @@
   padding: 10px;
 }
 
-.cursor-pointer {
-  &:hover {
-    cursor: pointer;
-  }
+.cursor-pointer:hover {
+  cursor: pointer;
 }
 
 .ws-nowrap {
