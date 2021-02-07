@@ -1,0 +1,93 @@
+@import "override.css";
+@import "utility.css";
+@import "utility_colors.css";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #fcfcfc;
+}
+
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: darken(#ddd, 20%);
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+.img-fullsize > * {
+  width: auto !important;
+  height: auto !important;
+}
+
+.chat-top,
+.chat-middle,
+.chat-bottom {
+  margin: 0;
+  padding: 0;
+}
+
+.chat-top,
+.chat-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chat-top {
+  height: 75px;
+}
+
+.chat-bottom {
+  height: 65px;
+}
+
+.chat-middle {
+  height: calc(100% - 75px - 65px);
+}
+
+.msg-list {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto;
+  list-style-type: none;
+}
+
+.msg-list li:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.animate-blink {
+  animation: blink normal 1.5s infinite ease-in-out;
+  color: red !important;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
