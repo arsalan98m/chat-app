@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth, db } from "../misc/firebase";
+import { auth, db } from "../db/firebase";
 import { collectIdsAndDocs } from "../utils/utils";
 
 const ProfileContext = createContext();
