@@ -16,15 +16,17 @@ export const ProfileProvider = ({ children }) => {
       setIsLoading(true);
       if (authObj) {
         //   Logged in
-        userRef = db.collection("profiles").doc(authObj.uid);
-        userRef.onSnapshot((snapshot) => {
-          const profileData = collectIdsAndDocs(snapshot);
-          setProfile(profileData);
-          setIsLoading(false);
-        });
+        userRef = db
+          .collection("profiles")
+          .doc(authObj.uid)
+          .onSnapshot((snapshot) => {
+            const profileData = collectIdsAndDocs(snapshot);
+            setProfile(profileData);
+            setIsLoading(false);
+          });
       } else {
         // Sign out
-        userRef();
+
         setProfile(null);
         setIsLoading(false);
       }
