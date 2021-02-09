@@ -1,8 +1,10 @@
 import React from "react";
 import { Drawer, Button, Divider, Alert } from "rsuite";
 import { useProfileContext } from "../../context/ProfileContext";
-import EditableInput from "../EditableInput";
 import { db, auth } from "../../db/firebase";
+import EditableInput from "../EditableInput";
+import ProviderBlock from "./ProviderBlock";
+import AvatarUploadBtn from "./AvatarUploadBtn";
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfileContext();
@@ -28,6 +30,7 @@ const Dashboard = ({ onSignOut }) => {
 
       <Drawer.Body>
         <h3>Hey, {profile.name}</h3>
+        <ProviderBlock />
         <Divider />
         <EditableInput
           name="nickname"
@@ -35,6 +38,8 @@ const Dashboard = ({ onSignOut }) => {
           onSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
+
+        <AvatarUploadBtn />
       </Drawer.Body>
 
       <Drawer.Footer>
