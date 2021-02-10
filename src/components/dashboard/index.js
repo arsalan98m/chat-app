@@ -2,7 +2,7 @@ import React from "react";
 import { Drawer, Button, Divider, Alert } from "rsuite";
 import { useProfileContext } from "../../context/ProfileContext";
 import { db, auth } from "../../db/firebase";
-import EditableInput from "../EditableInput";
+import EditableInput from "./EditableInput";
 import ProviderBlock from "./ProviderBlock";
 import AvatarUploadBtn from "./AvatarUploadBtn";
 import moment from "moment";
