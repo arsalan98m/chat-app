@@ -23,7 +23,7 @@ const Chat = () => {
   return (
     <>
       <div className="chat-top">
-        <ChatTop />
+        <ChatTop currentRoom={currentRoom} />
       </div>
 
       <div className="chat-middle">
