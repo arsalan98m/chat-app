@@ -4,6 +4,7 @@ import { Modal, Button, Alert } from "rsuite";
 import { useModalState } from "../../utils/utils";
 import { storage, db } from "../../db/firebase";
 import { useProfileContext } from "../../context/ProfileContext";
+import ProfileAvatar from "./ProfileAvatar";
 
 const fileInputTypes = ".png, .jpeg, .jpg";
 
@@ -33,6 +34,7 @@ const AvatarUploadBtn = () => {
 
   const { profile } = useProfileContext();
 
+  console.log("p=>", profile);
   const onFileInputChange = (e) => {
     const currentFiles = e.target.files;
     if (currentFiles.length === 1) {
@@ -82,6 +84,11 @@ const AvatarUploadBtn = () => {
 
   return (
     <div className="mt-3 text-center">
+      <ProfileAvatar
+        src={profile.photoUrl}
+        name={profile.name}
+        className="width-200 height-200 img-fullsize font-huge avatar__image"
+      />
       <div>
         <label
           htmlFor="avatar-upload"

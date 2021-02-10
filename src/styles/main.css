@@ -128,3 +128,11 @@ body,
   display: inline-block;
   margin-left: 1rem;
 }
+
+.avatar__image {
+  background: transparent;
+}
+
+.avatar__image > img {
+  border-radius: 50%;
+}
