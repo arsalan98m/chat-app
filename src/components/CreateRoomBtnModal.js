@@ -13,6 +13,7 @@ import {
 } from "rsuite";
 import firebase from "firebase/app";
 import { db } from "../db/firebase";
+import { useProfileContext } from "../context/ProfileContext";
 
 const { StringType } = Schema.Types;
 
@@ -32,6 +33,8 @@ const CreateRoomBtnModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef();
 
+  const { profile } = useProfileContext();
+
   const onFormChange = (value) => {
     setFormValue(value);
   };
@@ -48,8 +51,8 @@ const CreateRoomBtnModal = () => {
     };
 
     try {
-      await db.collection("rooms").add(newRoomData);
-      Alert.info(`${formValue.name} has been created`, 4000);
+      await db.collection("rooms").doc(profile.id).set(newRoomData);
+      Alert.info(`${formValue.name} room has been created`, 4000);
 
       setIsLoading(false);
       setFormValue(INITIAL_FORM);

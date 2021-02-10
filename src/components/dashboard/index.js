@@ -50,7 +50,7 @@ const Dashboard = ({ onSignOut }) => {
           Created at:{" "}
           <span className="dashboard__dateTime">
             {" "}
-            {moment(dateTime).calendar()}
+            {moment(dateTime).fromNow()}
           </span>
         </h5>
 

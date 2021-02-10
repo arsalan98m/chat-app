@@ -5,7 +5,7 @@ import { collectIdsAndDocs } from "../utils/utils";
 const RoomContext = createContext();
 
 export const RoomProvider = ({ children }) => {
-  const [rooms, setRooms] = useState();
+  const [rooms, setRooms] = useState(null);
 
   useEffect(() => {
     const roomListRef = db.collection("rooms");
@@ -15,7 +15,7 @@ export const RoomProvider = ({ children }) => {
       setRooms(data);
     });
 
-    // return () => roomListRef();
+    return () => roomListRef();
   }, []);
 
   return <RoomContext.Provider value={rooms}>{children}</RoomContext.Provider>;

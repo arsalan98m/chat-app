@@ -5,7 +5,7 @@ import { ProfileProvider } from "./context/ProfileContext";
 
 //Pages
 import SignIn from "./pages/SignIn";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 // components
 import PrivateRoute from "./components/PrivateRoute";
