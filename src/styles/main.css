@@ -136,3 +136,7 @@ body,
 .avatar__image > img {
   border-radius: 50%;
 }
+
+.dashboard__dateTime {
+  font-weight: lighter;
+}

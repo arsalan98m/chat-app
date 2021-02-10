@@ -5,9 +5,16 @@ import { db, auth } from "../../db/firebase";
 import EditableInput from "../EditableInput";
 import ProviderBlock from "./ProviderBlock";
 import AvatarUploadBtn from "./AvatarUploadBtn";
+import moment from "moment";
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfileContext();
+
+  // date and time
+  const { nanoseconds, seconds } =
+    profile.createdAt !== null && profile.createdAt;
+  var timestamp = { nanoseconds, seconds };
+  const dateTime = new Date(timestamp?.seconds * 1000);
 
   const onSave = async (newData) => {
     const userRef = db.collection("profiles");
@@ -38,6 +45,14 @@ const Dashboard = ({ onSignOut }) => {
           onSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
+        <br />
+        <h5>
+          Created at:{" "}
+          <span className="dashboard__dateTime">
+            {" "}
+            {moment(dateTime).calendar()}
+          </span>
+        </h5>
 
         <AvatarUploadBtn />
       </Drawer.Body>
