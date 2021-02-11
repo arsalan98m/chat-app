@@ -3,15 +3,28 @@ import { Button, Alert } from "rsuite";
 import moment from "moment";
 import { useProfileContext } from "../../context/ProfileContext";
 import { db } from "../../db/firebase";
+import ProfileAvatar from "../dashboard/ProfileAvatar";
 
 const RoomItem = ({ room }) => {
-  const { createdAt, name } = room;
+  const { createdAt, name, lastMessage } = room;
   const { profile } = useProfileContext();
 
   // date and time
-  const { nanoseconds, seconds } = createdAt !== null && createdAt;
-  var timestamp = { nanoseconds, seconds };
-  const dateTime = new Date(timestamp?.seconds * 1000);
+  // const { nanoseconds, seconds } = createdAt !== null && createdAt;
+  // var timestamp = { nanoseconds, seconds };
+  // const dateTime = new Date(timestamp?.seconds * 1000);
+  let dateTime = null;
+
+  if (lastMessage) {
+    const { nanoseconds, seconds } =
+      lastMessage.createdAt !== null && lastMessage.createdAt;
+    const timestamp = { nanoseconds, seconds };
+    dateTime = new Date(timestamp?.seconds * 1000);
+  } else {
+    const { nanoseconds, seconds } = createdAt !== null && createdAt;
+    const timestamp = { nanoseconds, seconds };
+    dateTime = new Date(timestamp?.seconds * 1000);
+  }
 
   // Deleting room
 
@@ -27,16 +40,28 @@ const RoomItem = ({ room }) => {
     <div>
       <div className="d-flex justify-content-between align-items-center">
         <h3 className="text-disappear">{name}</h3>
-        <div className="d-flex flex-direction-column">
-          <span> {moment(dateTime).fromNow()}</span>
-          {room.id === profile.id && (
-            <Button onClick={() => deleteRoom(room.id)}>Delete</Button>
-          )}
-        </div>
+
+        {room.id === profile.id && (
+          <Button onClick={() => deleteRoom(room.id)}>Delete Room</Button>
+        )}
       </div>
 
-      <div className="d-flex align-items-center text-black-70">
-        <span>No Messages yet ....</span>
+      <div className="d-flex justify-content-between align-items-center text-black-70">
+        {lastMessage ? (
+          <div className="d-flex">
+            <div className="d-flex align-items-center">
+              <ProfileAvatar src={lastMessage.author.photoUrl} />
+            </div>
+
+            <div className="text-disappear ml-2">
+              <div className="italic">{lastMessage.author.name}</div>
+              <span>{lastMessage.text}</span>
+            </div>
+          </div>
+        ) : (
+          <span>No Messages yet ....</span>
+        )}
+        <span className="text-blue"> {moment(dateTime).fromNow()}</span>
       </div>
     </div>
   );

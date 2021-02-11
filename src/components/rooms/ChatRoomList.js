@@ -7,6 +7,10 @@ import { Link, useLocation } from "react-router-dom";
 const ChatRoomList = ({ aboveElHeight }) => {
   const rooms = useRoomContext();
   const location = useLocation();
+
+  if (!rooms) {
+    return <Loader center vertical size="md" content="Loading" speed="slow" />;
+  }
   return (
     <Nav
       appearance="subtle"
@@ -18,7 +22,6 @@ const ChatRoomList = ({ aboveElHeight }) => {
       }}
       activeKey={location.pathname}
     >
-      {console.log("r=>", rooms)}
       {rooms.length === 0 ? (
         <h3 className="text-disappear" style={{ marginLeft: "0.5rem" }}>
           No Chat rooms Available

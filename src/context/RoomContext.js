@@ -18,6 +18,7 @@ export const RoomProvider = ({ children }) => {
     return () => roomListRef();
   }, []);
 
+  console.log("rooms=>", rooms);
   return <RoomContext.Provider value={rooms}>{children}</RoomContext.Provider>;
 };
 
