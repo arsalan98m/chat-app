@@ -18,9 +18,16 @@ const ChatRoomList = ({ aboveElHeight }) => {
       }}
       activeKey={location.pathname}
     >
-      <h3 className="text-disappear" style={{ marginLeft: "0.5rem" }}>
-        Available Chat rooms
-      </h3>{" "}
+      {console.log("r=>", rooms)}
+      {rooms.length === 0 ? (
+        <h3 className="text-disappear" style={{ marginLeft: "0.5rem" }}>
+          No Chat rooms Available
+        </h3>
+      ) : (
+        <h3 className="text-disappear" style={{ marginLeft: "0.5rem" }}>
+          Available Chat rooms
+        </h3>
+      )}{" "}
       {!rooms && (
         <Loader center vertical content="Loading" speed="slow" size="md" />
       )}
