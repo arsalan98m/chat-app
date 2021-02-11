@@ -41,7 +41,7 @@ const RoomItem = ({ room }) => {
       <div className="d-flex justify-content-between align-items-center">
         <h3 className="text-disappear">{name}</h3>
 
-        {room.id === profile.id && (
+        {room.roomOwnerId === profile.id && (
           <Button onClick={() => deleteRoom(room.id)}>Delete Room</Button>
         )}
       </div>

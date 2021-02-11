@@ -38,3 +38,5 @@ export const collectIdsAndDocs = (doc) => {
     ...doc.data(),
   };
 };
+
+// Updating user updates on firestore

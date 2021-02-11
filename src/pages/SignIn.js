@@ -15,6 +15,7 @@ const SignIn = () => {
             name: user.displayName,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             email: user.email,
+
             photoUrl:
               additionalUserInfo.providerId === "facebook.com"
                 ? additionalUserInfo.profile.picture.data.url
@@ -46,7 +47,7 @@ const SignIn = () => {
             <Panel>
               <div className="text-center">
                 <h2>Chat App</h2>
-                <p>Welcome to Progressive Web Chat App</p>
+                <p>Welcome to Chat App</p>
               </div>
               <div className="mt-3 login__btn">
                 <Button

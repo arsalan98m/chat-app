@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Col, Row } from "rsuite";
 import Sidebar from "../../components/Sidebar";
-import { RoomProvider, useRoomContext } from "../../context/RoomContext";
+import { RoomProvider } from "../../context/RoomContext";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { useMediaQuery } from "../../utils/utils";
 import Chat from "./Chat";

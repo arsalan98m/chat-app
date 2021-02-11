@@ -26,6 +26,7 @@ const ChatBottom = () => {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         roomId: chatId,
         text: input,
+        roomOwnerId: profile.id,
         author: { ...profile },
       };
 
@@ -40,6 +41,7 @@ const ChatBottom = () => {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         msgId: msgId.id,
         text: input,
+        roomOwnerId: profile.id,
       };
 
       await db.collection("rooms").doc(chatId).update({ lastMessage });

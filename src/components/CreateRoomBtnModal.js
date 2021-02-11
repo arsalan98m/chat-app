@@ -48,12 +48,12 @@ const CreateRoomBtnModal = () => {
     const newRoomData = {
       ...formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      roomId: profile.id,
+      roomOwnerId: profile.id,
     };
 
     try {
-      await db.collection("rooms").doc(profile.id).set(newRoomData);
-      // await db.collection("rooms").add(newRoomData);
+      // await db.collection("rooms").doc(profile.id).set(newRoomData);
+      await db.collection("rooms").add(newRoomData);
       Alert.info(`${formValue.name} room has been created`, 4000);
 
       setIsLoading(false);

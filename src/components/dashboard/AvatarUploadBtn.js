@@ -34,7 +34,6 @@ const AvatarUploadBtn = () => {
 
   const { profile } = useProfileContext();
 
-  console.log("p=>", profile);
   const onFileInputChange = (e) => {
     const currentFiles = e.target.files;
     if (currentFiles.length === 1) {
